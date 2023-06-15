@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.CheckBox?>
+<VBox alignment="CENTER" prefHeight="500" prefWidth="500" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gobangjavafx.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label fx:id="welcomeText" text="五子棋">
+      <font>
+         <Font name="JetBrains Mono Medium Italic" size="30.0" />
+      </font></Label>
+    <Button alignment="CENTER" onAction="#onStartButtonClick" text="开始游戏！" textAlignment="CENTER">
+      <font>
+         <Font name="JetBrains Mono Regular" size="20.0" />
+      </font>
+    </Button>
+    <HBox alignment="BASELINE_CENTER">
+        <Label text="请指定游戏模式：" />
+        <ChoiceBox fx:id="gameModeChoiceBox">
+            <String fx:value="单人模式" />
+            <String fx:value="双人模式" />
+        </ChoiceBox>
+    </HBox>
+    <HBox alignment="BASELINE_CENTER" spacing="10">
+        <Label text="请指定先手：" />
+        <CheckBox fx:id="gameFirstStart" />
+        <Label text="计算机先手" />
+    </HBox>
+    <Label text="(双人模式下先后手请保持默认值)" />
+</VBox>

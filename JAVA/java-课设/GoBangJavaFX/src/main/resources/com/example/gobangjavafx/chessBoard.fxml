@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="550" prefWidth="500" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gobangjavafx.ChessBoardController">
+   <children>
+
+      <HBox AnchorPane.topAnchor="0">
+         <Button fx:id="exit" maxHeight="95" onAction="#onExitButtonClicked" text="退出" textAlignment="CENTER">
+            <font>
+               <Font name="JetBrains Mono Regular" size="25" />
+            </font>
+         </Button>
+
+         <Button fx:id="repentance" maxHeight="95" onAction="#onRepentanceButtonClicked" text="悔棋" textAlignment="CENTER">
+            <font>
+               <Font name="JetBrains Mono Regular" size="25" />
+            </font>
+         </Button>
+      </HBox>
+
+      <HBox alignment="CENTER" spacing="10" AnchorPane.rightAnchor="75" AnchorPane.topAnchor="12.5">
+         <Text fx:id="gameModeText" style="-fx-font-size: 20;" text="" />
+         <Text fx:id="text" style="-fx-font-size: 20;" text="时间： 秒" />
+      </HBox>
+
+      <StackPane prefHeight="500" prefWidth="500" AnchorPane.bottomAnchor="0">
+         <ImageView fx:id="chessBoard" fitHeight="500" fitWidth="500" preserveRatio="true" AnchorPane.bottomAnchor="0">
+            <Image url="@image/GoBangChessBoard.jpg" />
+         </ImageView>
+         <Pane fx:id="chessPane" onMouseClicked="#onChessBoardClicked" prefHeight="500" prefWidth="500" AnchorPane.bottomAnchor="0"> </Pane>
+      </StackPane>
+   </children>
+</AnchorPane>
