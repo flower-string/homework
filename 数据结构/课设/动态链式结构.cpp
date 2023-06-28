@@ -11,11 +11,12 @@ struct term {
 };
 
 struct LNode {
-    //单链表存储term多项式值
+    // 单链表存储term多项式值
     term data;
     struct LNode *next;
 };
 typedef LNode *polynomail;
+
 /*升幂排列*/
 void arrangeup(polynomail pa) {
     polynomail h = pa, p, q, r;
