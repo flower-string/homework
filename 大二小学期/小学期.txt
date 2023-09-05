@@ -1,0 +1,144 @@
+在这次实习中，我主要学习了Vue框架的使用和开发，包括Vue的基础知识、vue-cli项目搭建、Vue组件开发等方面。我将从以下几个方面来详细介绍我的学习经历。
+
+一、Vue基础知识
+1、Vue程序的基本结构
+在学习Vue框架之前，我们先需要了解Vue程序的基本结构。Vue的程序主要由以下三个部分组成：
+模板（template）：用于展示页面的HTML代码。
+数据（data）：用于存储页面中需要展示的数据。
+实例（instance）：Vue实例是Vue程序的入口，它将模板和数据结合起来，生成可以展示的页面。
+2、Vue绑定数据
+Vue框架的核心之一就是数据双向绑定。双向绑定可以将页面中的数据和Vue实例中的数据保持同步。在Vue中，我们可以通过v-bind指令将数据绑定到HTML元素上，例如：
+<div v-bind:title="message">{{ message }}</div>
+这样，当message数据发生变化时，页面中的title属性和div中的文本内容都会同步更新。
+3、Vue绑定事件
+除了数据绑定，Vue还可以通过v-on指令绑定事件。例如，我们可以通过以下代码给按钮绑定一个点击事件：
+<button v-on:click="sayHello">点击我</button>
+这里的sayHello是在Vue实例中定义的一个方法，它会在按钮被点击时被调用。
+4、Vue双向绑定
+Vue还可以为表单元素实现双向绑定，例如：
+<input v-model="message" placeholder="输入内容">
+这里的message既可以更新input元素的值，也可以通过改变input元素的值来更新message的值。
+5、条件渲染与循环渲染
+Vue框架还提供了一些指令，用于实现条件渲染和循环渲染。例如，我们可以通过v-if指令根据条件来控制元素的显示和隐藏：
+<div v-if="isShow">这里是显示的内容</div>
+此外，Vue还提供了v-for指令用于循环渲染，例如：
+<ul>  <li v-for="item in items">{{ item }}</li></ul>
+这样就会根据items数组的长度循环渲染li元素。
+
+二、vue-cli项目搭建
+在学习了Vue的基础知识之后，我们接下来学习了如何使用vue-cli来搭建Vue项目。vue-cli是Vue官方提供的脚手架工具，可以方便地创建一个基于Vue的项目。
+1、安装vue-cli
+首先，我们需要安装vue-cli。可以使用npm命令来安装，例如：
+npm install -g @vue/cli
+2、创建Vue项目
+安装好vue-cli之后，我们就可以使用它来创建Vue项目了。在命令行中执行以下命令：
+vue create my-project
+这里的my-project是你要创建的项目名。
+3、添加路由
+在Vue项目中，我们可以使用vue-router来实现页面路由。首先需要安装vue-router：
+npm install vue-router --save
+然后在项目中创建一个router.js文件，定义路由规则：
+import Vue from 'vue'import Router from 'vue-router'import Home from './views/Home.vue'
+Vue.use(Router)
+export default new Router({  
+routes: [
+    	{      
+path: '/',      
+name: 'home',      
+component: Home
+    	},
+    	{      
+path: '/about',                                
+name: 'about',                                 
+component: () => import('./views/About.vue')    
+}
+  	]
+})
+这里定义了两个路由规则，分别对应了首页和关于页面。其中，Home和About是两个组件，分别对应了两个页面。
+最后，在main.js文件中引入router，并将其挂载到Vue实例上：
+import Vue from 'vue'import App from './App.vue'
+import router from './router'
+Vue.config.productionTip = falsenew 
+Vue({  router,  render: h => h(App),}).$mount('#app')
+这样，我们就成功添加了路由功能。
+4、使用组件
+在Vue中，组件是构建应用程序的基本单元。通过组件化开发，我们可以将应用程序分解为多个独立的、可复用的组件。在Vue项目中，我们可以通过import语句引入组件，然后在模板中使用它们。例如：
+<template>  
+<div>    
+<my-component></my-component>  
+</div>
+</template>
+<script>
+import MyComponent from './MyComponent.vue'
+export default 
+components: {    MyComponent  }
+}
+</script>
+这里的MyComponent就是一个组件，我们通过import语句将其引入，然后在components属性中注册它。最后，在模板中使用它即可。
+
+三、Vue组件开发
+除了基础知识和vue-cli项目搭建，我还深入学习了Vue组件的开发和使用。
+1、组件的生命周期
+在Vue中，组件有自己的生命周期，可以在不同的阶段执行不同的操作。Vue组件的生命周期主要包括以下几个阶段：
+beforeCreate：在实例被创建之前执行。
+created：在实例被创建之后立即执行。
+beforeMount：在实例被挂载到DOM之前执行。
+mounted：在实例被挂载到DOM之后执行。
+beforeUpdate：在数据更新之前执行。
+updated：在数据更新之后执行。
+beforeDestroy：在实例被销毁之前执行。
+destroyed：在实例被销毁之后执行。
+2、父子组件通信方式
+在Vue中，父子组件之间有多种通信方式。其中，props和$emit是最常用的两种方式。
+props可以用来传递数据给子组件。在父组件中定义props：
+<template>  	
+<child-component :message="message"></child-component>
+</template>
+
+<script>
+import ChildComponent from './ChildComponent.vue'
+export default {  
+components: {    ChildComponent  },  
+data() {    
+return {      message: 'Hello World!'    }  
+}
+}
+</script>
+在子组件中，可以通过props来接收数据：
+<template>  
+<div>{{ message }}</div>
+</template>
+
+<script>
+export default {  
+props: {    message: String  }
+}
+</script>
+$emit可以用来向父组件发送事件。在子组件中，可以通过$emit来触发一个自定义事件：
+<template>  
+<button @click="handleClick">点击我</button>
+</template>
+
+<script>
+export default {  
+methods: {    
+handleClick() {      
+this.$emit('my-event', 'Hello World!')    
+}  
+}
+}
+</script>
+在父组件中，可以通过v-on指令来监听这个事件：
+<template>
+<child-component @my-event="handleEvent"></child-component>
+</template>
+
+<script>
+import ChildComponent from './ChildComponent.vue'
+export default {  
+components: {    ChildComponent  },  
+methods: {    
+handleEvent(data) {      console.log(data) // 'Hello World!'    }  
+}
+}
+</script>
